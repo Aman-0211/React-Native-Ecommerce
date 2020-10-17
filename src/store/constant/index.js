@@ -1,0 +1,19 @@
+
+// Authentication constants
+
+export const GET_USER_AUTHENTICATION_REQUEST =
+  'GET_USER_AUTHENTICATION_REQUEST';
+export const GET_USER_AUTHENTICATION = 'GET_USER_AUTHENTICATION';
+export const GET_USER_AUTHENTICATION_FAIL = 'GET_USER_AUTHENTICATION_FAIL';
+export const RESET_USER_DATA = 'RESET_USER_DATA';
+
+
+//  Product constans
+export const ADD_TO_CART = "ADD_TO_CART";
+export const REMOVE_ITEM = "REMOVE_ITEM";
+export const SUB_QUANTITY = "SUB_QUANTITY";
+export const ADD_QUANTITY = "ADD_QUANTITY";
+export const ADD_SHIPPING = "ADD_SHIPPING";
+export const SUB_SHIPPING = "SUB_SHIPPING";
+
+
