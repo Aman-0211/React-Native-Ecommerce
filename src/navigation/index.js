@@ -18,6 +18,7 @@ function Navigation({authenticatedata}) {
 
 const mapStateToProps = store => ({
     authenticatedata: store.auth,
+    // total:store.productList
   });
   export default connect(mapStateToProps, null)(Navigation);
 

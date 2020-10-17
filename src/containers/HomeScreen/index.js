@@ -1,37 +1,53 @@
+import React from 'react';
+import {
+  SafeAreaView,
+  StyleSheet,
+  FlatList,
+  Text,
+  View,
+  StatusBar,
+} from 'react-native';
+import {connect} from 'react-redux';
+import {addToCart} from '../../store/actions/CartAction';
+import ProductList from './productList';
 
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { connect } from 'react-redux'
-
-function Home({items}){
-    console.log("items",items);
+function Home({data, addToCart, ...props}) {
+  const renderItem = ({item}) => {
+    return <ProductList key={item.id} data={item} addToCart={addToCart} />;
+  };
+  console.log('reducer', data);
   return (
-    <View style={styles.container}>
-      <Text>Home</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        data={data.items}
+        renderItem={(item) => renderItem(item, props)}
+        keyExtractor={(item) => item.id}
+      />
+    </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#81ecec",
-    alignItems: "center",
-    justifyContent: "center",
+    marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: '#F8F8F8',
   },
 });
 
-const mapStateToProps = (state)=>{
-    return {
-      items: state.productList
-    }
-  }
+const mapStateToProps = (state) => {
+  return {
+    data: state.productList,
+  };
+};
 
-const mapDispatchToProps= (dispatch)=>{
-    
-    return{
-        addToCart: (id)=>{dispatch(addToCart(id))}
-    }
-}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCart: (id) => {
+      dispatch(addToCart(id));
+    },
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

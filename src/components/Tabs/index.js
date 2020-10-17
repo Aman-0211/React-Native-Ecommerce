@@ -5,11 +5,14 @@ import {BottomMenuItem} from '../BottomTab';
 export const blue = "#3A36D5";
 export const grey = "#CFD2D7"
 
-export const TabBar = ({state, descriptors, navigation}) => {
+export const TabBar = ({state, descriptors, navigation,...props}) => {
   const totalWidth = Dimensions.get('window').width;
     
   const [translateValue] = useState(new Animated.Value(0));
   const tabWidth = totalWidth / state.routes.length;
+
+  console.log("props",props);
+
   return (
     <View style={[style.tabContainer, {width: totalWidth}]}>
       <View style={{flexDirection: 'row'}}>
@@ -72,6 +75,7 @@ export const TabBar = ({state, descriptors, navigation}) => {
             <BottomMenuItem
                 iconName={label.toString()}
                 isCurrent={isFocused}
+                // cartItem={props.data.length}
               />
           </TouchableOpacity>
         );
