@@ -5,6 +5,7 @@ import {
   FlatList,
   Alert,
   Text,
+  Platform,
   View,
   StatusBar,
 } from 'react-native';
@@ -69,7 +70,7 @@ function Cart({data, navigation, ...props}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
+    marginTop: Platform.OS === 'ios' ? StatusBar.currentHeight : 0,
     backgroundColor: '#F8F8F8',
   },
 });

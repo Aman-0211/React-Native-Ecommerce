@@ -3,6 +3,7 @@ import {
   SafeAreaView,
   StyleSheet,
   FlatList,
+  Platform,
   Text,
   View,
   StatusBar,
@@ -31,7 +32,7 @@ function Home({data, addToCart, ...props}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
+    marginTop: Platform. StatusBar.currentHeight || 0,
     backgroundColor: '#F8F8F8',
   },
 });
