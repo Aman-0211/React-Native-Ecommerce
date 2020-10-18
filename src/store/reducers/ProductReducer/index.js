@@ -4,6 +4,8 @@ import {
     REMOVE_ITEM,
     SUB_QUANTITY,
     ADD_QUANTITY,
+    ADD_SHIPPING,
+    SUB_SHIPPING
   } from '../../constant';
   
   const initialState = {
@@ -112,6 +114,17 @@ import {
 
         case SUB_QUANTITY:
             return subQuantity(state,action)
+        
+        case ADD_SHIPPING:
+            return {
+                ...state,
+                total: state.total + 6
+            }
+        case SUB_SHIPPING:
+            return{
+                ...state,
+                total: state.total - 6
+            }
      
         default:
             return state;

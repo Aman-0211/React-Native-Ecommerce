@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {View, TouchableOpacity, Dimensions, StyleSheet, Animated} from 'react-native';
+import {connect} from 'react-redux';
 import {BottomMenuItem} from '../BottomTab';
 
 export const blue = "#3A36D5";
 export const grey = "#CFD2D7"
 
-export const TabBar = ({state, descriptors, navigation,...props}) => {
+const TabBar = ({state, descriptors, navigation,...props}) => {
   const totalWidth = Dimensions.get('window').width;
     
   const [translateValue] = useState(new Animated.Value(0));
@@ -75,7 +76,7 @@ export const TabBar = ({state, descriptors, navigation,...props}) => {
             <BottomMenuItem
                 iconName={label.toString()}
                 isCurrent={isFocused}
-                // cartItem={props.data.length}
+                cartItem={props.data.addedItems.length}
               />
           </TouchableOpacity>
         );
@@ -84,6 +85,13 @@ export const TabBar = ({state, descriptors, navigation,...props}) => {
     </View>
   );
 };
+
+export const mapStateToProps = (state) => {
+    return {
+      data: state.productList,
+    };
+  };
+export default connect(mapStateToProps)(TabBar)
 
 const style = StyleSheet.create({
     tabContainer: {

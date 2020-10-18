@@ -7,7 +7,7 @@ import {
   import {createStackNavigator} from '@react-navigation/stack';
   import { View } from "react-native";
 import { Cart, Event, Home, Order } from '../../containers';
-import { TabBar } from '../../components/Tabs';
+import { TabBar } from '../../components';
 
 
 
@@ -20,6 +20,15 @@ export  function MainStack() {
           </Stack.Navigator>
     );
   }
+
+
+  export  function CartStack() {
+      return (
+            <Stack.Navigator>
+              <Stack.Screen name="Cart" component={Cart} />
+            </Stack.Navigator>
+      );
+    }
 
 
 
@@ -35,7 +44,7 @@ function PrivateRout() {
             <Tab.Screen name="home" component={MainStack} />
             <Tab.Screen name="file-text-o" component={Event} />
             <Tab.Screen name="shopping-bag" component={Order} />
-            <Tab.Screen name="cart-plus" component={Cart} />
+            <Tab.Screen name="cart-plus" component={CartStack} />
         </Tab.Navigator>
         {/* {useSafeArea().bottom > 0 && (
           <View
